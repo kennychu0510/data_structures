@@ -89,6 +89,10 @@ public:
     }
   }
 
+  ~Stack() {
+    clear();
+  }
+
 private:
   bool isEmpty()
   {
@@ -110,6 +114,6 @@ int main()
   }
   newStack.pop();
   newStack.insert(13.5);
-  newStack.clear();
+  
   return 0;
 }
