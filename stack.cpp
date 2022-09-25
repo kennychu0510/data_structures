@@ -64,7 +64,7 @@ public:
     cout << endl;
   }
 
-  bool pop()
+  bool pop(float &popped)
   {
     if (isEmpty())
     {
@@ -73,6 +73,7 @@ public:
     StackNode *top = head;
     head = head->next;
     cout << "[" << top->value << " is popped!]" << endl;
+    popped = top->value;
     delete top;
     print();
     return true;
@@ -83,9 +84,12 @@ public:
     cout << endl << "Clearing stack now..." << endl;
     if (isEmpty())
       return;
+    StackNode *top;
     while (head != NULL)
     {
-      pop();
+      top = head;
+      head = head->next;
+      delete top;
     }
   }
 
@@ -112,7 +116,9 @@ int main()
   {
     newStack.insert(data[i]);
   }
-  newStack.pop();
+  float popped;
+  newStack.pop(popped);
+  cout << "popped item is " << popped << endl;
   newStack.insert(13.5);
   
   return 0;
