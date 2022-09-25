@@ -90,22 +90,6 @@ public:
   }
 
 private:
-  StackNode *getTail()
-  {
-    if (isEmpty())
-    {
-      cout << "Stack is empty" << endl;
-      return head;
-    }
-
-    StackNode *ptr = head;
-    while (ptr->next != NULL)
-    {
-      ptr = ptr->next;
-    }
-    return ptr;
-  }
-
   bool isEmpty()
   {
     if (!head)
