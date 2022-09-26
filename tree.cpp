@@ -55,6 +55,15 @@ public:
     inOrder(node->right);
   }
 
+  int getHeight(Node *node)
+  {
+    if (!node) return 0;
+    int left_height = getHeight(node->left);
+    int right_height = getHeight(node->right);
+    if (left_height >= right_height) return left_height + 1;
+    else return right_height + 1;
+    }
+
   ~Tree()
   {
     clear(root);
@@ -94,15 +103,21 @@ int main()
 
   cout << "Preorder Traversal: " << endl;
   tree.preorder(tree.root);
-  cout << endl << "25 15 10 4 12 22 18 24 50 35 31 44 70 66 90 <-- Correct Answer" << endl;
+  cout << endl
+       << "25 15 10 4 12 22 18 24 50 35 31 44 70 66 90 <-- Correct Answer" << endl;
 
-  cout << endl << "Postorder Traversal: " << endl;
+  cout << endl
+       << "Postorder Traversal: " << endl;
   tree.postorder(tree.root);
-  cout << endl << "4 12 10 18 24 22 15 31 44 35 66 90 70 50 25 <-- Correct Answer" << endl;
+  cout << endl
+       << "4 12 10 18 24 22 15 31 44 35 66 90 70 50 25 <-- Correct Answer" << endl;
 
-  cout << endl << "InOrder Traversal: " << endl;
+  cout << endl
+       << "InOrder Traversal: " << endl;
   tree.inOrder(tree.root);
-  cout << endl << "4 10 12 15 18 22 24 25 31 35 44 50 66 70 90 <-- Correct Answer" << endl;
+  cout << endl
+       << "4 10 12 15 18 22 24 25 31 35 44 50 66 70 90 <-- Correct Answer" << endl;
 
+  cout << tree.getHeight(tree.root) << endl;
   return 0;
 }
